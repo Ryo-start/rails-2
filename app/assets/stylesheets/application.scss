@@ -1,0 +1,104 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bulma";
+
+ .logo img {
+    width: 150px;
+    height: auto;
+  }
+  
+
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  // left: 0;
+  background-color: #fff;
+  padding: 26px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.mypage-btn-container {
+  position: relative;
+}
+
+.mypage-btn-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mypage-dropdown a {
+  color: #5c3e26;
+  text-decoration: none;
+}
+
+.mypage-dropdown a:hover {
+  color: #8b5c38;
+}
+
+.category-container:hover {
+  cursor: pointer;
+}
+
+/* プロフィールのコンテナを右上に配置 */
+.profile-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* ドロップダウンメニュー */
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.mypage-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-dropdown .dropdown-item {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.mypage-dropdown .dropdown-item:hover {
+  background-color: #f4f4f4;
+}

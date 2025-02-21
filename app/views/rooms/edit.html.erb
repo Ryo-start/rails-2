@@ -1,0 +1,40 @@
+<h1>部屋の編集</h1>
+
+<%= form_with(model: @room, local: true) do |form| %>
+  <% if @room.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  <%= form.label :name, "部屋名" %>
+  <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :details, "部屋説明" %>
+    <%= form.text_area :details %>
+  </div>
+
+  <div>
+    <%= form.label :price, "料金" %>
+    <%= form.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :image, "部屋画像" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit '更新する' %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', room_path(@room) %>

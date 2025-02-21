@@ -1,0 +1,21 @@
+<%= form_with(model: [room, reservation], local: true) do |f| %>
+    <div>
+      <%= f.label :check_in_date, "チェックイン日" %>
+      <%= f.date_field :check_in_date, required: true %>
+    </div>
+  
+    <div>
+      <%= f.label :check_out_date, "チェックアウト日" %>
+      <%= f.date_field :check_out_date, required: true %>
+    </div>
+  
+    <div>
+      <%= f.label :guest_count, "宿泊人数" %>
+      <%= f.number_field :guest_count, min: 1, required: true %>
+    </div>
+  
+    <div>
+      <%= f.submit "予約する" %>
+    </div>
+  <% end %>
+  
