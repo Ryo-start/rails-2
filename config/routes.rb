@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
-=======
   devise_for :users
 
   # プロフィール編集と更新のルート
@@ -52,4 +48,3 @@ end
 
 # member do
 # reservationsリソースに対して個別の操作を追加します。patch :confirmというルートを定義しており、confirmアクションを予約に対して実行できるようにします。confirmアクションは予約の確定処理に使われると考えられます。
->>>>>>> ac96add (宿泊アプリの提出)

@@ -58,8 +58,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-<<<<<<< HEAD
-=======
 
 gem 'mutex_m'
 gem 'bigdecimal'
@@ -69,4 +67,3 @@ gem 'carrierwave'
 gem 'devise'
 gem 'omniauth-twitter'
 gem "bulma-rails"
->>>>>>> ac96add (宿泊アプリの提出)

@@ -31,8 +31,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-<<<<<<< HEAD
-=======
 
 /public/packs
 /public/packs-test
@@ -41,4 +39,3 @@
 yarn-debug.log*
 .yarn-integrity
 ._*
->>>>>>> ac96add (宿泊アプリの提出)
