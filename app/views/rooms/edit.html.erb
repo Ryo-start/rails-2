@@ -1,5 +1,3 @@
-<h1>部屋の編集</h1>
-
 <%= form_with(model: @room, local: true) do |form| %>
   <% if @room.errors.any? %>
     <div class="errors">
@@ -12,29 +10,33 @@
     </div>
   <% end %>
 
-  <div>
-  <%= form.label :name, "部屋名" %>
-  <%= form.text_field :name %>
-  </div>
+  <section class="FormContainer">
+    <h1 class="text-center mb-5">部屋の編集</h1>
 
-  <div>
-    <%= form.label :details, "部屋説明" %>
-    <%= form.text_area :details %>
-  </div>
+    <div class="form-group">
+      <%= form.label :name, "部屋名", class: "h4 font-weight-bold" %>
+      <%= form.text_field :name, class: "form-control form-control-lg" %>
+    </div>
 
-  <div>
-    <%= form.label :price, "料金" %>
-    <%= form.number_field :price, step: 0.01 %>
-  </div>
+    <div class="form-group">
+      <%= form.label :details, "部屋説明", class: "h4 font-weight-bold" %>
+      <%= form.text_area :details, class: "form-control form-control-lg" %>
+    </div>
 
-  <div>
-    <%= form.label :image, "部屋画像" %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="form-group">
+      <%= form.label :price, "料金", class: "h4 font-weight-bold" %>
+      <%= form.number_field :price, step: 0.01, class: "form-control form-control-lg" %>
+    </div>
 
-  <div>
-    <%= form.submit '更新する' %>
-  </div>
+    <div class="form-group">
+      <%= form.label :image, "部屋画像", class: "h4 font-weight-bold" %>
+      <%= form.file_field :image, class: "form-control form-control-lg" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit '更新する', class: "btn-lg" %>
+    </div>
+  </section>
 <% end %>
 
 <%= link_to '戻る', room_path(@room) %>

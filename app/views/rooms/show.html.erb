@@ -1,18 +1,36 @@
-<h1><%= @room.name %>の詳細</h1>
+<section class="Roomcontainer OwnRoomsContainer">
+  <h1 class="text-center mb-5"><%= @room.name %>の詳細</h1>
 
-<% if @room.image.attached? %>
-  <p><strong>部屋画像:</strong></p>
-  <%= image_tag @room.image, style: "width: 100px; height: auto;" %>
-<% else %>
-  <p>画像はありません</p>
-<% end %>
-<p><strong>施設名 :</strong> <%= @room.name %></p>
-<p><strong>紹介文 :</strong> <%= @room.details %></p>
-<p><strong>宿泊料金（/日） :</strong> <%= number_to_currency(@room.price, unit: '¥', precision: 0) %></p>
-
-
-
-<%= link_to '編集', edit_room_path(@room) %>
-<%= link_to '戻る', rooms_path %>
-
-<%= link_to '予約する', new_room_reservation_path(@room), class: 'btn btn-primary' %>
+  <table class="alogn-middle OwnRoomsTable">
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>宿泊料金（/日）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <% if @room.image.attached? %>
+            <%= image_tag @room.image, class: "img-thumbnail" %>
+          <% else %> 
+            <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png', class: "img-thumbnail" %>
+          <% end %>
+        </td>
+        <td><%= @room.name %></td>
+        <td><%= @room.details %></td>
+        <td><%= number_to_currency(@room.price, unit: '¥', precision: 0) %></td>
+        <td><%= link_to '編集', edit_room_path(@room) %></td>
+        <td>
+          <%= link_to '削除', room_path(@room), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </td>
+        <td><%= link_to '戻る', rooms_path %></td>
+        <td>
+          <%= link_to '予約する', new_room_reservation_path(@room), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -15,10 +15,50 @@
  */
  @import "bulma";
 
- .logo img {
-    width: 150px;
-    height: auto;
-  }
+
+body {
+  background-color: #fff;
+}
+
+
+// ヘッダー
+.Navbar {
+  background-color: #1c1d3b !important;
+  height: 80px;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center !important;
+  justify-content: space-between;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.header-container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center !important;
+  justify-content: space-between; 
+  padding: 0 32px;
+  width: 100%; 
+}
+
+.logo img {
+  width: 221px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 15px;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
   
 
 .mypage-dropdown {
@@ -57,11 +97,10 @@
 
 /* プロフィールのコンテナを右上に配置 */
 .profile-container {
-  position: absolute;
   top: 20px;
-  right: 20px;
+  right: 10px;
   display: flex;
-  align-items: center;
+  align-items: center !important;
 }
 
 .avatar-container {
@@ -71,7 +110,6 @@
 
 .user-avatar {
   border-radius: 50%;
-  margin-right: 10px;
 }
 
 /* ドロップダウンメニュー */
@@ -101,4 +139,117 @@
 
 .mypage-dropdown .dropdown-item:hover {
   background-color: #f4f4f4;
+}
+
+.label {
+  color:black !important;
+}
+
+.input {
+  background-color: white !important;
+  color:black !important;
+}
+
+.input::placeholder {
+  color: black !important; 
+}
+
+// 新規施設を登録
+.FormContainer {
+  background-color: #fff;
+  border-radius: 12px;
+  margin: auto;
+  width: 702px;
+  padding: 40px 0 180px;
+}
+
+/* フォームフィールド */
+.form-group {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* フォームフィールドのラベル */
+.form-control-lg {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  width:100%;
+}
+
+.form-control {
+  padding: .375rem .75rem;
+}
+
+/* 送信ボタン */
+.btn-lg {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: #ff7757;
+  color: #fff;
+}
+
+
+.mb-5 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 39px; 
+  color:black;
+}
+
+.h4 {
+  color:black;
+  width:33%;
+}
+
+.Roomcontainer{
+  max-width: 1440px;
+  padding: 0 32px;
+  margin-top: 40px;
+  margin-bottom: 260px;
+  color:black !important;
+}
+
+th {
+  color:black !important;
+}
+
+td {
+  padding: 16px .5rem !important;
+}
+
+.OwnRoomsTable {
+ width:100%;
+}
+
+.OwnRoomsTable td:first-of-type img {
+  width:120px;
+}
+
+thead {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+.search-form {
+  margin-bottom:40px;
+}
+
+
+.reservation-details p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color:black!important;
+}
+
+.reservation-details strong {
+  font-weight: bold;
+  color:black!important;
 }

@@ -7,27 +7,25 @@ class RoomsController < ApplicationController
   end
   
    # 施設検索結果ページ
-  def search
-    @rooms = nil
+   def search
+    @rooms = Room.all
   
     # キーワード検索
     if params[:q].present?
       @rooms = @rooms.where("name LIKE ? OR details LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
-    else
-      @rooms = Room.none  
     end
   
     # エリア検索
-    if params[:area].present?
+    if params[:area].present? && params[:area].strip != ""  
       valid_areas = ["東京", "大阪", "京都", "札幌"]
       if valid_areas.include?(params[:area])
         @rooms = @rooms.where("address LIKE ?", "%#{params[:area]}%")
       else
-        @rooms = Room.none  
+        @rooms = Room.none  # 無効なエリアの場合は検索結果を空にする
       end
     end
-
-    # 検索結果の件数を取得
+  
+    # 検索結果の件数
     @total_rooms = @rooms.count
   end
   
