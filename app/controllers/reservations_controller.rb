@@ -1,11 +1,10 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_reservation, only: [:edit, :update, :destroy,]
 
   def index
     @reservations = current_user.reservations.includes(:room)
-  end
-
-  def show
+    @rooms = Room.includes(:reservations).where.not(reservations: { status: 'pending' })
+    @reservations = current_user.reservations.where.not(status: 'pending').includes(:room)
   end
 
   def new
@@ -14,24 +13,36 @@ class ReservationsController < ApplicationController
   end
   
   def create
-    @room = Room.find(params[:room_id]) # 部屋情報の取得
+    @room = Room.find(params[:room_id])
     @reservation = @room.reservations.new(reservation_params)
     @reservation.user = current_user
-    if @reservation.save
-      redirect_to room_reservation_path(@room, @reservation), notice: '予約が確定しました。'
+    @reservation.status = 'pending'  # 仮予約として保存
+  
+    if @reservation.save  # 一時保存（仮予約）
+      redirect_to room_reservation_path(@room, @reservation)  # 予約詳細ページへリダイレクト
     else
-      render :new, notice: '予約が失敗しました'
+      render :new  # 保存に失敗した場合は新規作成画面を再表示
     end
-  end  
-    
+  end
+
+  def show
+    @room = Room.find(params[:room_id])
+    @reservation = @room.reservations.find(params[:id])  # 予約詳細の表示
+  end
+
   def confirm
-    if @reservation.update(confirmed: true)
-      redirect_to room_reservations_path(@reservation.room), notice: "予約が確定しました。" 
+    @room = Room.find(params[:room_id])
+    @reservation = @room.reservations.find(params[:id])
+  
+    # 仮予約を確定予約に更新
+    if @reservation.update(status: 'confirmed')  # 確定処理
+      flash[:alert] = "予約が確定しました"
+      redirect_to reservations_path
     else
       flash[:alert] = "予約の確定に失敗しました。"
-      render :show
+      render :show  # 更新に失敗した場合、確認画面に戻る
     end
-  end  
+  end
     
   def edit
   end

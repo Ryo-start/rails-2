@@ -49,7 +49,20 @@
         <% end %>
       </nav>
     </header>
+    
+    <% if flash[:alert] %>
+    <div class="alert alert-danger" style="color: black;">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+    <div class="alert alert-success" style="color: black;">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
 
     <%= yield %>
+
   </body>
 </html>

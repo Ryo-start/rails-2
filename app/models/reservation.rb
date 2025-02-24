@@ -2,6 +2,11 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
+  # スコープを追加：仮予約の状態
+  scope :pending, -> { where(status: 'pending') }
+  # スコープを追加：確定予約の状態
+  scope :confirmed, -> { where(status: 'confirmed') }
+
   validates :check_in_date, presence: true
   validates :check_out_date, presence: true
   validates :guest_count, presence: true, numericality: { only_integer: true, greater_than: 0 }
