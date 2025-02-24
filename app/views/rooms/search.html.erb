@@ -1,0 +1,29 @@
+<section class="Roomcontainer OwnRoomsContainer">
+  <table class="alogn-middle OwnRoomsTable">
+    <% if @total_rooms > 0 %>
+      <p class="text-center mb-5">検索結果: <%= @total_rooms %> 件</p>
+      <thead>
+        <tr>
+          <th>施設名</th>
+          <th>住所</th>
+          <th>施設詳細</th>
+          <th>宿泊料金（/日）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <td>
+              <%= link_to room.name, room %>
+            </td>
+            <td><%= room.address %></td>
+            <td><%= room.details %></td>
+            <td><%= number_to_currency(room.price, unit: '', precision: 0) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+      <p>該当する施設がありません。</p>
+    <% end %>
+  </table>
+</section>

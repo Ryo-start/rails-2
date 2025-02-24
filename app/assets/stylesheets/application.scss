@@ -1,0 +1,255 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bulma";
+
+
+body {
+  background-color: #fff;
+}
+
+
+// ヘッダー
+.Navbar {
+  background-color: #1c1d3b !important;
+  height: 80px;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center !important;
+  justify-content: space-between;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.header-container {
+  display: flex;
+  flex-wrap: inherit;
+  align-items: center !important;
+  justify-content: space-between; 
+  padding: 0 32px;
+  width: 100%; 
+}
+
+.logo img {
+  width: 221px;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 15px;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+  
+
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  // left: 0;
+  background-color: #fff;
+  padding: 26px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+.mypage-btn-container {
+  position: relative;
+}
+
+.mypage-btn-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mypage-dropdown a {
+  color: #5c3e26;
+  text-decoration: none;
+}
+
+.mypage-dropdown a:hover {
+  color: #8b5c38;
+}
+
+.category-container:hover {
+  cursor: pointer;
+}
+
+/* プロフィールのコンテナを右上に配置 */
+.profile-container {
+  top: 20px;
+  right: 10px;
+  display: flex;
+  align-items: center !important;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  border-radius: 50%;
+}
+
+/* ドロップダウンメニュー */
+.mypage-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.mypage-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage-dropdown .dropdown-item {
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.mypage-dropdown .dropdown-item:hover {
+  background-color: #f4f4f4;
+}
+
+.label {
+  color:black !important;
+}
+
+.input {
+  background-color: white !important;
+  color:black !important;
+}
+
+.input::placeholder {
+  color: black !important; 
+}
+
+// 新規施設を登録
+.FormContainer {
+  background-color: #fff;
+  border-radius: 12px;
+  margin: auto;
+  width: 702px;
+  padding: 40px 0 180px;
+}
+
+/* フォームフィールド */
+.form-group {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* フォームフィールドのラベル */
+.form-control-lg {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  width:100%;
+}
+
+.form-control {
+  padding: .375rem .75rem;
+}
+
+/* 送信ボタン */
+.btn-lg {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: #ff7757;
+  color: #fff;
+}
+
+
+.mb-5 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 39px; 
+  color:black;
+}
+
+.h4 {
+  color:black;
+  width:33%;
+}
+
+.Roomcontainer{
+  max-width: 1440px;
+  padding: 0 32px;
+  margin-top: 40px;
+  margin-bottom: 260px;
+  color:black !important;
+}
+
+th {
+  color:black !important;
+}
+
+td {
+  padding: 16px .5rem !important;
+}
+
+.OwnRoomsTable {
+ width:100%;
+}
+
+.OwnRoomsTable td:first-of-type img {
+  width:120px;
+}
+
+thead {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+.search-form {
+  margin-bottom:40px;
+}
+
+
+.reservation-details p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color:black!important;
+}
+
+.reservation-details strong {
+  font-weight: bold;
+  color:black!important;
+}

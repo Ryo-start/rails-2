@@ -1,16 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stayapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DeviseRails6</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar Navbar">
+        <!-- ロゴのコンテナ（左上） -->
+        <div class="header-container">
+          <%= link_to image_tag("logo.png", alt: "Potepan Share Logo"), user_session_path, class: "logo" %>
+
+        <% if user_signed_in? %>
+          <!-- プロフィールのコンテナ（右上） -->
+          <div class="profile-container">
+            <!-- アバター画像をクリックでもドロップダウンを表示させる -->
+            <div class="avatar-container" id="avatarContainer">
+              <% if current_user.avatar.present? %>
+                <%= image_tag current_user.avatar.url, alt: "#{current_user.username}のアバター", class: "user-avatar", size: '40x40' %>
+              <% else %>
+                <%= image_tag "default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153", alt: "デフォルトアバター", class: "user-avatar", size: '40x40' %>
+              <% end %>
+            </div>  
+        
+            <div class="mypage-btn-container" id="mypageBtnContainer">
+              <button class="btn btn-lg mx-3" style="background-color: transparent; color: white;"><%= current_user.username %></button>
+              <div class="mypage-dropdown" id="mypageDropdown">
+                <ul>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                  <%= link_to "新規施設を登録", new_room_path, class: "dropdown-item" %>
+                  <%= link_to "登録済み施設一覧", rooms_path, class: "dropdown-item" %>
+                  <%= link_to "予約済み施設一覧", reservations_path, class: "dropdown-item" %>
+                  <%= link_to "アカウント編集", edit_user_registration_path, class: "dropdown-item" %>
+                  <%= link_to "プロフィール編集", edit_profile_path, class: "dropdown-item" %>
+                </ul>  
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="flex-row align-items-center">
+            <%= link_to "ログイン", new_user_session_path, style: "color: white;" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "button is-warning is-light" %>
+          </div>
+        <% end %>
+      </nav>
+    </header>
+    
+    <% if flash[:alert] %>
+    <div class="alert alert-danger" style="color: black;">
+      <%= flash[:alert] %>
+    </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+    <div class="alert alert-success" style="color: black;">
+      <%= flash[:notice] %>
+    </div>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

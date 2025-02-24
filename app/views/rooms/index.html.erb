@@ -1,0 +1,61 @@
+<section class="Roomcontainer OwnRoomsContainer">
+  <h1 class="text-center mb-5">部屋一覧</h1>
+  
+  <%= form_with url: search_rooms_path, method: :get, local: true, class: "search-form" do %>
+    <div class="form-group">
+      <label for="area" class="h4 font-weight-bold">エリア名</label>
+      <input type="text" name="area" id="area" value="<%= params[:area] %>" placeholder="エリア名を入力" class="form-control form-control-lg">
+    </div>
+  
+    <div class="form-group">
+      <label for="q" class="h4 font-weight-bold">キーワード名</label>
+      <input type="text" name="q" id="q" value="<%= params[:q] %>" placeholder="キーワード名を入力" class="form-control form-control-lg">
+    </div>
+  
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary btn-lg">検索</button>
+    </div>
+  <% end %>
+  
+
+  <% if @rooms && @rooms.any? %>
+    <table class="alogn-middle OwnRoomsTable">    
+    <thead>
+        <tr>
+          <th>画像</th>
+          <th>施設名</th>
+          <th>紹介文</th>
+          <th>宿泊料金（/日）</th>
+          <th>作成日</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rooms.each do |room| %>
+          <tr>
+            <td>
+              <% if room.image.attached? %>
+                <%= image_tag room.image %>
+              <% else %> 
+                <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png' %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to room.name, room %>
+            </td>  
+            <td><%= room.details %></td>
+            <td><%= number_to_currency(room.price, unit: '¥', precision: 0) %></td>
+            <td><%= room.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+            <td><%= link_to '編集', edit_room_path(room) %></td>
+            <td><%= link_to '削除', room_path(room), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+          </tr>  
+        <% end %>
+      </tbody>
+    </table>
+
+  <% else %>
+    <p>部屋がありません。</p>
+  <% end %>
+
+</section>

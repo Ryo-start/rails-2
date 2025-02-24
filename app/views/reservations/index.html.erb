@@ -1,0 +1,44 @@
+<section class="Roomcontainer OwnRoomsContainer">
+  <h1 class="text-center mb-5">予約一覧</h1>
+
+  <table class="alogn-middle OwnRoomsTable">   
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>施設名</th>
+        <th>紹介文</th>
+        <th>チェックイン</th>
+        <th>チェックアウト</th>
+        <th>合計金額</th>
+        <th>予約確定日時</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr> 
+          <td>
+            <% if reservation.room.image.attached? %> 
+              <%= image_tag reservation.room.image%> 
+            <% else %>
+              <%= image_tag 'default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png' %>
+            <% end %>
+          </td>
+          <td><%= reservation.room.name %></td>
+          <td><%= reservation.room.details %></td>
+          <td><%= reservation.check_in_date.strftime("%Y/%m/%d") %></td>
+          <td><%= reservation.check_out_date.strftime("%Y/%m/%d") %></td>
+          <td><%= number_to_currency(reservation.total_price, unit: "¥", precision: 0) %></td>
+          <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+          <td>
+            <%= link_to "予約を削除", room_reservation_path(reservation.room, reservation), 
+              method: :delete, 
+              data: { confirm: "本当に削除しますか？" }, 
+              class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+</section>
