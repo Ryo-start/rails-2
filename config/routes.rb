@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
+
   # プロフィール編集と更新のルート
-  get 'profile/edit', to: 'user#edit_profile', as: 'edit_profile'
-  patch 'profile/update', to: 'user#update_profile', as: 'profile_update'
+  get 'profile/edit', to: 'users#edit_profile', as: 'edit_profile'
+  patch 'profile/update', to: 'users#update_profile', as: 'profile_update'
 
   # アプリケーションのトップページ（ルート）を指定
-  root to: "user#index"
+  root to: "users#index"
   resources :reservations
   
   # 他のリソース

@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   
   # ログイン認証
   before_action :authenticate_user!
